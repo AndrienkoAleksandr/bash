@@ -1,0 +1,1160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)http://linuxconfig.org/bash-scripting-tutorial -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr" slick-uniqueid="3"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	  <!--<base href="http://linuxconfig.org/bash-scripting-tutorial">--><base href=".">
+  
+  <meta name="keywords" content="linux, config, how to, administration, settings">
+  <meta name="author" content="Super User">
+  <meta name="description" content="Linux configuration articles.">
+  <meta name="generator" content="Joomla! - Open Source Content Management">
+  <title>Bash scripting Tutorial</title>
+  <link href="http://linuxconfig.org/templates/jsn_teki_pro/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/modal.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/autotoc.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/style.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/bootstrap-responsive.min.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/bootstrap-extended.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/system.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/general.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/template.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/blue.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/business.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/jsn_mobile.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/jsn_css3.css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/style(1).css" type="text/css">
+  <link rel="stylesheet" href="./Bash scripting Tutorial_files/skitter.styles.css" type="text/css">
+  <style type="text/css">
+
+	#jsn-page {
+		min-width: 1150px;
+	}
+	#jsn-header_inner,
+	#jsn-body,
+	#jsn-footer_inner {
+		width: 1150px;
+		margin: 0 auto;
+	}
+	#jsn-pos-promo-left {
+		float: left;
+		width: 35%;
+		left: -100%;
+	}
+	#jsn-pos-promo {
+		width: 100%;
+		left: 0;
+	}
+	#jsn-pos-promo-right {
+		float: right;
+		width: 23%;
+	}
+
+	#jsn-leftsidecontent {
+		float: left;
+		width: 23%;
+		left: -100%;
+	}
+	#jsn-maincontent {
+		float: left;
+		width: 100%;
+		left: 0;
+	}
+	#jsn-rightsidecontent {
+		float: right;
+		width: 23%;
+	}
+
+		#jsn-maincontent_inner4 { left: 72%; }
+		#jsn-maincontent_inner5 { right: 72%; }
+	
+	#jsn-pos-innerleft {
+		float: left;
+		width: 28%;
+		left: -72%;
+	}
+	#jsn-centercol {
+		float: left;
+		width: 72%;
+		left: 0;
+	}
+	#jsn-pos-innerright {
+		float: right;
+		width: 28%;
+	}
+
+		div.jsn-modulecontainer ul.menu-mainmenu ul,
+		div.jsn-modulecontainer ul.menu-mainmenu ul li {
+			width: 200px;
+		}
+		div.jsn-modulecontainer ul.menu-mainmenu ul ul {
+		margin-left: 199px;
+		}
+		#jsn-pos-toolbar div.jsn-modulecontainer ul.menu-mainmenu ul ul {
+			
+				margin-right: 199px;
+				margin-left : auto
+		}
+	
+		div.jsn-modulecontainer ul.menu-sidemenu ul,
+		div.jsn-modulecontainer ul.menu-sidemenu ul li {
+			width: 200px;
+		}
+		div.jsn-modulecontainer ul.menu-sidemenu li ul {
+			right: -200px;
+		}
+		body.jsn-direction-rtl div.jsn-modulecontainer ul.menu-sidemenu li ul {
+			left: -200px;
+			right: auto;
+		}
+		div.jsn-modulecontainer ul.menu-sidemenu ul ul {
+		margin-left: 199px;
+		}
+	
+.jsn-themeslider-skitter-6kl6L .label_skitter {filter:alpha(opacity=75);opacity: 0.75;}.jsn-themeslider-skitter-6kl6L .label_skitter p.jsn-themeslider-caption-title {font-family: Verdana;
+font-size: 10px;
+font-weight: bold;
+text-align: left;
+color: #E9E9E9;}.jsn-themeslider-skitter-6kl6L .label_skitter p.jsn-themeslider-caption-description {font-family: Arial;
+font-size: 11px;
+font-weight: normal;
+text-align: left;
+color: #AFAFAF;}.jsn-themeslider-skitter-6kl6L .label_skitter a.jsn-themeslider-caption-link {font-family: Verdana;
+font-size: 11px;
+font-weight: bold;
+text-align: right;
+color: #E06614;}.jsn-themeslider-skitter-6kl6L .info_slide {top: 15px;}.jsn-themeslider-skitter-6kl6L .info_slide_dots {top: 15px;}
+  </style>
+  <script async="" src="./Bash scripting Tutorial_files/analytics.js"></script><script src="./Bash scripting Tutorial_files/mootools-core.js" type="text/javascript" style="color: rgb(0, 0, 0);"></script><style type="text/css"></style>
+  <script src="./Bash scripting Tutorial_files/core.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/mootools-more.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/modal.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/jquery.min.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/jquery-noconflict.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/jquery-migrate.min.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/caption.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/bootstrap.min.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/noconflict.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/utils.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/jsn_template.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/jquery.min(1).js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/jsn_is_conflict.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/jquery.easing.1.3.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/jquery.animate-colors-min.js" type="text/javascript"></script>
+  <script src="./Bash scripting Tutorial_files/jquery.skitter.js" type="text/javascript"></script>
+  <script type="text/javascript">
+
+		jQuery(function($) {
+			SqueezeBox.initialize({});
+			SqueezeBox.assign($('a.modal').get(), {
+				parse: 'rel'
+			});
+		});
+		function jModalClose() {
+			SqueezeBox.close();
+		}
+jQuery(window).on('load',  function() {
+				new JCaption('img.caption');
+			});
+				JSNTemplate.initTemplate({
+					templatePrefix			: "jsn_teki_pro_",
+					templatePath			: "/templates/jsn_teki_pro",
+					enableRTL				: false,
+					enableGotopLink			: true,
+					enableMobile			: true,
+					enableMobileMenuSticky	: true
+				});
+			
+
+		jQuery(function($) {
+			SqueezeBox.initialize({});
+			SqueezeBox.assign($('a.modal').get(), {
+				parse: 'rel'
+			});
+		});
+		function jModalClose() {
+			SqueezeBox.close();
+		}
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<!-- html5.js and respond.min.js for IE less than 9 -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="/plugins/system/jsntplframework/assets/3rd-party/respond/respond.min.js"></script>
+	<![endif]-->
+	</head>
+<body id="jsn-master" class="jsn-textstyle-business jsn-textsize-medium jsn-color-blue jsn-direction-ltr jsn-specialfont jsn-css3 jsn-mobile  jsn-joomla-30 jsn-com-content jsn-view-article jsn-itemid-914" style="font-family: Arial;border: 0 none;">
+	<a name="top" id="top"></a>
+	<div id="jsn-page">
+			<div id="jsn-pos-stick-rightbottom">
+			<div class=" jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><div class="jsn-modulecontent">
+<div>
+	<p><a href="http://eepurl.com/yW9qr" title="Newsletter"><img src="./Bash scripting Tutorial_files/newsletter.png" width="36" height="101"></a></p>
+<p><a href="http://www.linuxcareer.com/contact-us" title="Feedback"><img src="./Bash scripting Tutorial_files/feedback.png" width="36" height="101"></a></p></div><div class="clearbreak"></div></div></div></div>
+		</div>
+			<div id="jsn-header"><div id="jsn-header_inner">
+			<div id="jsn-logo">
+			<h1 class="jsn-topheading">LinuxConfig - </h1><a href="http://linuxconfig.org/index.php" title=""><img src="./Bash scripting Tutorial_files/logo.png" alt="" id="jsn-logo-desktop"></a>			</div>
+			<div id="jsn-headerright">
+							<div id="jsn-pos-top">
+					<div class=" jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><div class="jsn-modulecontent"><span class="jsn-menu-toggle">Menu</span>
+<ul class="menu-topmenu menu-iconmenu">
+<li class="first last jsn-icon-contact">	<a href="http://www.linuxcareer.com/contact-us">
+		<span>
+		Contact us		</span>
+	</a>
+	</li></ul><div class="clearbreak"></div></div></div></div>
+					<div class="clearbreak"></div>
+				</div>
+						</div>
+			<div class="clearbreak"></div>
+					<div id="jsn-menu">
+							<div id="jsn-pos-mainmenu">
+					<div class=" jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><div class="jsn-modulecontent"><span class="jsn-menu-toggle">Menu</span>
+<ul class="menu-mainmenu">
+<li class="first jsn-icon-home"><a href="http://linuxconfig.org/" title="Start here">
+	<span>
+		<span class="jsn-menutitle">Home</span><span class="jsn-menudescription">Start here</span>	</span>
+</a></li><li class="parent"><a href="http://linuxconfig.org/linux-tutorials">
+	<span>
+		Linux Tutorials	</span>
+</a><span class="jsn-menu-toggle"></span><ul><li class="first">	<a href="http://www.linuxis.org/">
+		<span>
+		What is Linux?		</span>
+	</a>
+	</li><li>	<a href="http://linuxconfig.org/linux-command-line-tutorial">
+		<span>
+		Linux command line tutorial		</span>
+	</a>
+	</li><li>	<a href="./Bash scripting Tutorial_files/Bash scripting Tutorial.html">
+		<span>
+		Bash scripting tutorial		</span>
+	</a>
+	</li><li>	<a href="http://linuxconfig.org/vim-tutorial">
+		<span>
+		Vim tutorial		</span>
+	</a>
+	</li><li>	<a href="http://linuxconfig.org/perl-programming-tutorial">
+		<span>
+		Perl programming tutorial		</span>
+	</a>
+	</li><li>	<a href="http://linuxconfig.org/c-programming-tutorial">
+		<span>
+		C programming tutorial		</span>
+	</a>
+	</li><li class="last">	<a href="http://linuxconfig.org/linux-tutorials">
+		<span>
+		All Linux tutorials		</span>
+	</a>
+	</li></ul></li><li><a href="http://linuxconfig.org/linux-commands">
+	<span>
+		Linux Commands	</span>
+</a></li><li>	<a href="http://www.linuxcareer.com/it-skills-watch">
+		<span>
+		IT Skills Watch		</span>
+	</a>
+	</li><li class="parent">	<a href="https://linuxacademy.com/">
+		<span>
+		Linux Training		</span>
+	</a>
+	<span class="jsn-menu-toggle"></span><ul><li class="first">	<a href="http://www.linuxcareer.com/linux-lpi-101-practice-quiz">
+		<span>
+		LPI 101 training		</span>
+	</a>
+	</li><li class="last">	<a href="http://www.linuxcareer.com/linux-lpi-102-practice-quiz">
+		<span>
+		LPI 102 training		</span>
+	</a>
+	</li></ul></li><li class="parent">	<a href="http://jobs.linuxcareers.com/">
+		<span>
+		Linux Jobs		</span>
+	</a>
+	<span class="jsn-menu-toggle"></span><ul><li class="first last">	<a href="http://www.linuxcareer.com/linux-career-advice">
+		<span>
+		Linux career advice		</span>
+	</a>
+	</li></ul></li><li class="last">	<a href="http://forum.linuxcareer.com/forum.php">
+		<span>
+		Forum		</span>
+	</a>
+	</li></ul><div class="clearbreak"></div></div></div></div>
+				</div>
+										<span id="jsn-desktopswitch">
+					<a href="http://linuxconfig.org/bash-scripting-tutorial#" onclick="javascript: JSNUtils.setTemplateAttribute(&#39;jsn_teki_pro_&#39;,&#39;mobile&#39;,&#39;no&#39;); return false;"></a>
+				</span>
+				<span id="jsn-mobileswitch">
+					<a href="http://linuxconfig.org/bash-scripting-tutorial#" onclick="javascript: JSNUtils.setTemplateAttribute(&#39;jsn_teki_pro_&#39;,&#39;mobile&#39;,&#39;yes&#39;); return false;"></a>
+				</span>
+							<div id="jsn-pos-toolbar">
+					<div class=" jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><div class="jsn-modulecontent">
+<div>
+	<a href="http://www.linuxcareer.com/" class="link-button button-orange"><font size="1">Linux Career<br>Member Site</font></a></div><div class="clearbreak"></div></div></div></div>
+				</div>
+			            <div class="clearbreak"></div>
+			</div>
+				</div></div>
+		<div id="jsn-body">
+					<div id="jsn-content-top" class="">
+				<div id="jsn-promo">
+			                    <div id="jsn-pos-promo"><div id="jsn-pos-promo_inner">
+                        <div class=" jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><div class="jsn-modulecontent">
+<div>
+	<center>
+<script type="text/javascript">// <![CDATA[
+google_ad_client = "ca-pub-4906753266448300";
+/* 728x90, created 3/12/09 */
+google_ad_slot = "7045095412";
+google_ad_width = 728;
+google_ad_height = 90;
+// ]]></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">// <![CDATA[
+
+// ]]></script>
+</center></div><div class="clearbreak"></div></div></div></div>
+                    </div></div>
+							<div class="clearbreak"></div>
+				</div>
+						</div>
+					<div id="jsn-content" class="jsn-hasinnerright ">
+				<div id="jsn-maincontent"><div id="jsn-maincontent_inner">
+						<div id="jsn-maincontent_inner1"><div id="jsn-maincontent_inner2"><div id="jsn-maincontent_inner3"><div id="jsn-maincontent_inner4"><div id="jsn-maincontent_inner5">
+					<div id="jsn-centercol">
+                        <div id="jsn-centercol_inner">
+										<div id="jsn-mainbody-content" class=" jsn-hasmainbody">
+											<div id="jsn-mainbody">
+										<div id="system-message-container">
+	</div>
+
+										<div class="item-page">
+	
+		<div class="page-header">
+		<h2>
+										Bash scripting Tutorial					</h2>
+				</div>
+		<div class="jsn-article-toolbar">
+							<div class="clearfix"></div>
+	</div>
+		
+							<div class="autotoc" style="float:right;"><script type="text/javascript">
+            // <![CDATA[
+            function toc_toggle_visible(ob)
+            {
+              var ul = ob.parentNode.parentNode.getElementsByTagName("ul")[0];
+              var d = ul.style.display == "none";
+              ul.style.display = d ? "" : "none";
+              ob.innerHTML = d ? "Hide"
+                               : "Show";
+              return false;
+            }
+            // ]]>
+            </script><span>Contents</span><span>[<a href="http://linuxconfig.org/bash-scripting-tutorial#" onclick="return toc_toggle_visible(this);">Hide</a>]</span><ul><li><ul><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h1-hello-world-bash-shell-script" class="toclink toclink-h1">Hello World Bash Shell Script</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h2-simple-backup-bash-shell-script" class="toclink toclink-h1">Simple Backup bash shell script</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h3-variables" class="toclink toclink-h1">Variables</a><ul><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h3-1-global-vs-local-variables" class="toclink toclink-h2">Global vs. Local variables</a></li></ul></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h4-passing-arguments-to-the-bash-script" class="toclink toclink-h1">Passing arguments to the bash script</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h5-executing-shell-commands-with-bash" class="toclink toclink-h1">Executing shell commands with bash</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h6-reading-user-input" class="toclink toclink-h1">Reading User Input</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h7-bash-trap-command" class="toclink toclink-h1">Bash Trap Command</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h8-arrays" class="toclink toclink-h1">Arrays</a><ul><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h8-1-declare-simple-bash-array" class="toclink toclink-h2">Declare simple bash array</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h8-2-read-file-into-bash-array" class="toclink toclink-h2">Read file into bash array</a></li></ul></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h9-bash-if-else-fi-statements" class="toclink toclink-h1">Bash if / else / fi statements</a><ul><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h9-1-simple-bash-if-else-statement" class="toclink toclink-h2">Simple Bash if/else statement</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h9-2-nested-if-else" class="toclink toclink-h2">Nested if/else</a></li></ul></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h10-bash-comparisons" class="toclink toclink-h1">Bash Comparisons</a><ul><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h10-1-arithmetic-comparisons" class="toclink toclink-h2">Arithmetic Comparisons</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h10-2-string-comparisons" class="toclink toclink-h2">String Comparisons</a></li></ul></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h11-bash-file-testing" class="toclink toclink-h1">Bash File Testing</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h12-loops" class="toclink toclink-h1">Loops</a><ul><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h12-1-bash-for-loop" class="toclink toclink-h2">Bash for loop</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h12-2-bash-while-loop" class="toclink toclink-h2">Bash while loop</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h12-3-bash-until-loop" class="toclink toclink-h2">Bash until loop</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h12-4-control-bash-loop-with" class="toclink toclink-h2">Control bash loop with</a></li></ul></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h13-bash-functions" class="toclink toclink-h1">Bash Functions</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h14-bash-select" class="toclink toclink-h1">Bash Select</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h15-case-statement-conditional" class="toclink toclink-h1">Case statement conditional</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h16-bash-quotes-and-quotations" class="toclink toclink-h1">Bash quotes and quotations</a><ul><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h16-1-escaping-meta-characters" class="toclink toclink-h2">Escaping Meta characters</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h16-2-single-quotes" class="toclink toclink-h2">Single quotes</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h16-3-double-quotes" class="toclink toclink-h2">Double Quotes</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h16-4-bash-quoting-with-ansi-c-style" class="toclink toclink-h2">Bash quoting with ANSI-C style</a></li></ul></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h17-arithmetic-operations" class="toclink toclink-h1">Arithmetic Operations</a><ul><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h17-1-bash-addition-calculator-example" class="toclink toclink-h2">Bash Addition Calculator Example</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h17-2-bash-arithmetics" class="toclink toclink-h2">Bash Arithmetics</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h17-3-round-floating-point-number" class="toclink toclink-h2">Round floating point number</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h17-4-bash-floating-point-calculations" class="toclink toclink-h2">Bash floating point calculations</a></li></ul></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h18-redirections" class="toclink toclink-h1">Redirections</a><ul><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h18-1-stdout-from-bash-script-to-stderr" class="toclink toclink-h2">STDOUT from bash script to STDERR</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h18-2-stderr-from-bash-script-to-stdout" class="toclink toclink-h2">STDERR from bash script to STDOUT</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h18-3-stdout-to-screen" class="toclink toclink-h2">stdout to screen</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h18-4-stdout-to-file" class="toclink toclink-h2">stdout to file</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h18-5-stderr-to-file" class="toclink toclink-h2">stderr to file</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h18-6-stdout-to-stderr" class="toclink toclink-h2">stdout to stderr</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h18-7-stderr-to-stdout" class="toclink toclink-h2">stderr to stdout</a></li><li><a href="http://linuxconfig.org/bash-scripting-tutorial#h18-8-stderr-and-stdout-to-file" class="toclink toclink-h2">stderr and stdout to file</a></li></ul></li></ul></li></ul></div>	<table border="0">
+<tbody>
+<tr>
+<td><a href="http://linuxconfig-org.tradepub.com/free/w_mach02#linux-offers" target="_self" title="Bash Beginners Guide PDF Download" rel="nofollow"><img src="./Bash scripting Tutorial_files/bash.png" border="0" alt="Free BASH scripting guide DOWNLOAD"></a><br><a href="http://linuxconfig-org.tradepub.com/free/w_mach02#linux-offers" target="_self" title="Bash Scripting Beginners Guide PDF Download" rel="nofollow">&gt;PDF DOWNLOAD&lt;</a> <br> <a href="http://linuxconfig-org.tradepub.com/free/w_advb01/?p=w_advb01#linux-offers" target="_self" title="Bash Scripting Guide PDF Download" rel="nofollow"><img src="./Bash scripting Tutorial_files/re_tradepub-bash.png" border="0" alt="Free BASH scripting guide DOWNLOAD"></a><br> <a href="http://linuxconfig-org.tradepub.com/free/w_advb01/?p=w_advb01#linux-offers" target="_self" title="Bash Advandced Guide PDF Download" rel="nofollow">&gt;PDF DOWNLOAD&lt;</a></td>
+<td style="text-align: center;">This bash script tutorial assumes no previous knowledge of bash scripting.As you will soon discover in this quick comprehensive bash scripting  guide, learning the bash shell scripting is very easy task. However, if you do not find an answer to your questions by reading this bash tutorial or you need extra help, feel free to ask us on our new <a href="http://forum.linuxcareer.com/" target="_blank" title="Linux Forum" rel="nofollow">Linux Forum</a>. We will be more than happy to help you with your bash questions there.<br><br>Lets begin this bash scripting tutorial with a simple "Hello World" script.    Let's start with Learning the bash Shell: Unix Shell Programming<br><br><a href="http://linuxconfig-org.tradepub.com/free/w_mach02#linux-offers" target="_self" title="Bash Scripting Beginners Guide PDF Download" rel="nofollow"> Bash Scripting <strong>Beginners</strong> Guide <br><span style="color: red;">FREE</span> PDF DOWNLOAD </a><br><br><br><a href="http://linuxconfig-org.tradepub.com/free/w_advb01/?p=w_advb01#linux-offers" target="_self" title="Bash Scripting Advanced Guide PDF Download" rel="nofollow"> Bash Scripting <strong>Advanced</strong> Guide <br><span style="color: red;">FREE</span> PDF DOWNLOAD </a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="h1-hello-world-bash-shell-script">1.&nbsp;Hello World Bash Shell Script</h1>
+<p>
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="307" height="119" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0">
+<param name="width" value="307">
+<param name="height" value="119">
+<param name="align" value="left">
+<param name="src" value="/images/flash/bash.swf"> <embed type="application/x-shockwave-flash" width="307" height="119" src="/images/flash/bash.swf" align="left">
+</object>
+</p>
+<br>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>First you need to find out where is your bash interpreter located. Enter the following into your command line:</p>
+<p> </p>
+<p> </p>
+<br><br>
+<pre style="width: 400px;">$ which bash
+</pre>
+<p><img src="./Bash scripting Tutorial_files/locate-bash-interpreter.gif" border="0" alt="bash interpreter location: /bin/bash" title="Locate a Bash Interpreter" width="188" height="43"></p>
+<p>Open up you favorite text editor and a create file called hello_world.sh. Insert the following lines to a file:</p>
+<p>NOTE:Every bash shell script in this tutorial starts with <strong>shebang:"#!"</strong> which is not read as a comment. First line is also a place where you put your interpreter which is in this case: /bin/bash.</p>
+<p>Here is our first bash shell script example:</p>
+<pre style="width: 400px;">#!/bin/bash<br># declare STRING variable<br>STRING="Hello World"<br>#print variable on a screen<br>echo $STRING<br>
+</pre>
+<p>Navigate to a directory where your hello_world.sh is located and make the file executable:</p>
+<pre style="width: 400px;">$ chmod +x hello_world.sh </pre>
+<p><img src="./Bash scripting Tutorial_files/make-bash-script-executable.gif" border="0" alt="Make bash shell script executable" title="Make bash shell script executable" width="263" height="30"></p>
+<p>Now you are ready to execute your first bash script:</p>
+<div id="s">
+<pre>./hello_world.sh </pre>
+</div>
+<p><img src="./Bash scripting Tutorial_files/Hellobash.gif" border="0" alt="Example of simple bash shell script" title="Example of simple bash shell script" width="214" height="43"></p>
+ 
+<p> </p>
+<h1 id="h2-simple-backup-bash-shell-script">2.&nbsp;Simple Backup bash shell script</h1>
+<div id="s" style="position: absolute; width: 430px; height: 45px; background-color: white;">
+<pre>#!/bin/bash<br>tar -czf myhome_directory.tar.gz /home/linuxconfig<br></pre>
+</div>
+<p><br><br><br><br><br><img src="./Bash scripting Tutorial_files/Bash-Simple-backup-script-example.gif" border="0" alt="Simple Backup bash script" title="Simple Backup bash script"></p>
+<h1 id="h3-variables">3.&nbsp;Variables</h1>
+<p>In this example we declare simple bash variable and print it on the screen ( stdout ) with echo command.</p>
+<pre>#!/bin/bash<br> STRING="HELLO WORLD!!!"<br> echo $STRING </pre>
+<p><img src="./Bash scripting Tutorial_files/Bash-string-Variables-bash-script.gif" border="0" alt="Bash string Variables in bash script" title="Bash string Variables in bash script" width="484" height="43"></p>
+<p>Your backup script and variables:</p>
+<pre>#!/bin/bash<br> OF=myhome_directory_$(date +%Y%m%d).tar.gz<br> tar -czf $OF /home/linuxconfig </pre>
+<p><img src="./Bash scripting Tutorial_files/Bash-backup-Script-bash-variables.gif" border="0" alt="Bash backup Script with bash Variables" title="Bash backup Script with bash Variables" width="484" height="69"></p>
+<h2 id="h3-1-global-vs-local-variables">3.1.&nbsp;Global vs. Local variables</h2>
+<pre>#!/bin/bash<br>#Define bash global variable<br>#This variable is global and can be used anywhere in this bash script<br>VAR="global variable"<br>function bash {<br>#Define bash local variable<br>#This variable is local to bash function only<br>local VAR="local variable"<br>echo $VAR<br>}<br>echo $VAR<br>bash<br># Note the bash global variable did not change<br># "local" is bash reserved word<br>echo $VAR<br></pre>
+<p><img src="./Bash scripting Tutorial_files/Bash-global-local-bash-variables-bash-script.gif" border="0" alt="Global vs. Local Bash variables in bash script" title="Global vs. Local Bash variables in bash script" width="190" height="69"></p>
+<h1 id="h4-passing-arguments-to-the-bash-script">4.&nbsp;Passing arguments to the bash script</h1>
+<pre>#!/bin/bash<br># use predefined variables to access passed arguments<br>#echo arguments to the shell<br>echo $1 $2 $3 ' -&gt; echo $1 $2 $3'<br><br># We can also store arguments from bash command line in special array<br>args=("$@")<br>#echo arguments to the shell<br>echo ${args[0]} ${args[1]} ${args[2]} ' -&gt; args=("$@"); echo ${args[0]} ${args[1]} ${args[2]}'<br><br>#use $@ to print out all arguments at once<br>echo $@ ' -&gt; echo $@'<br><br># use $# variable to print out<br># number of arguments passed to the bash script<br>echo Number of arguments passed: $# ' -&gt; echo Number of arguments passed: $#' </pre>
+<pre>/arguments.sh Bash Scripting Tutorial </pre>
+<p><img src="./Bash scripting Tutorial_files/Passing-arguments-bash-script.gif" border="0" alt="Passing arguments to the bash script" title="Passing arguments to the bash script" width="472" height="82"></p>
+<h1 id="h5-executing-shell-commands-with-bash">5.&nbsp;Executing shell commands with bash</h1>
+<pre>#!/bin/bash<br># use backticks " ` ` " to execute shell command<br>echo `uname -o`<br># executing bash command without backticks<br>echo uname -o </pre>
+<p><img src="./Bash scripting Tutorial_files/Execute-shell-commands-within-bash-script.gif" border="0" alt="Executing shell commands with bash" title="Executing shell commands with bash" width="220" height="82"></p>
+<h1 id="h6-reading-user-input">6.&nbsp;Reading User Input</h1>
+<pre>#!/bin/bash<br> <br>echo -e "Hi, please type the word: \c "<br>read  word<br>echo "The word you entered is: $word"<br>echo -e "Can you please enter two words? "<br>read word1 word2<br>echo "Here is your input: \"$word1\" \"$word2\""<br>echo -e "How do you feel about bash scripting? "<br># read command now stores a reply into the default build-in variable $REPLY<br>read<br>echo "You said $REPLY, I'm glad to hear that! "<br>echo -e "What are your favorite colours ? "<br># -a makes read command to read into an array<br>read -a colours<br>echo "My favorite colours are also ${colours[0]}, ${colours[1]} and ${colours[2]}:-)" </pre>
+<p><img src="./Bash scripting Tutorial_files/Reading-user-input-bash-script.gif" border="0" alt="Reading User Input with bash" title="Reading User Input with bash" width="322" height="173"></p>
+<h1 id="h7-bash-trap-command">7.&nbsp;Bash Trap Command</h1>
+<table border="0">
+<tbody>
+<tr>
+<td>
+<pre>#!/bin/bash<br># bash trap command<br>trap bashtrap INT<br># bash clear screen command<br>clear;<br># bash trap function is executed when CTRL-C is pressed:<br># bash prints message =&gt; Executing bash trap subrutine !<br>bashtrap()<br>{<br>    echo "CTRL+C Detected !...executing bash trap !"<br>}<br># for loop from 1/10 to 10/10<br>for a in `seq 1 10`; do<br>    echo "$a/10 to Exit." <br>    sleep 1;<br>done<br>echo "Exit Bash Trap Example!!!" </pre>
+</td>
+<td width="300">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="249" height="199" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0">
+<param name="width" value="249">
+<param name="height" value="199">
+<param name="src" value="/images/flash/bash_trap.swf"><embed type="application/x-shockwave-flash" width="249" height="199" src="/images/flash/bash_trap.swf">
+</object>
+<br></td>
+</tr>
+</tbody>
+</table>
+<h1 id="h8-arrays">8.&nbsp;Arrays</h1>
+<h2 id="h8-1-declare-simple-bash-array">8.1.&nbsp;Declare simple bash array</h2>
+<pre>#!/bin/bash<br>#Declare array with 4 elements<br>ARRAY=( 'Debian Linux' 'Redhat Linux' Ubuntu Linux )<br># get number of elements in the array<br>ELEMENTS=${#ARRAY[@]}<br><br># echo each element in array <br># for loop<br>for (( i=0;i&lt;$ELEMENTS;i++)); do<br>    echo ${ARRAY[${i}]}<br>done </pre>
+<p><img src="./Bash scripting Tutorial_files/declare-bash-array.gif" border="0" alt="Declare simple bash array" title="Declare simple bash array" width="154" height="82"></p>
+<h2 id="h8-2-read-file-into-bash-array">8.2.&nbsp;Read file into bash array</h2>
+<div>
+<pre>#!/bin/bash<br># Declare array<br>declare -a ARRAY<br># Link filedescriptor 10 with stdin<br>exec 10&lt;&amp;0<br># stdin replaced with a file supplied as a first argument<br>exec &lt; $1<br>let count=0<br><br>while read LINE; do<br><br>    ARRAY[$count]=$LINE<br>    ((count++))<br>done<br><br>echo Number of elements: ${#ARRAY[@]}<br># echo array's content<br>echo ${ARRAY[@]}<br># restore stdin from filedescriptor 10<br># and close filedescriptor 10<br>exec 0&lt;&amp;10 10&lt;&amp;-<br><br></pre>
+</div>
+<p><strong>Bash script execution with an output:</strong></p>
+<pre>linuxconfig.org $ cat bash.txt <br>Bash<br>Scripting<br>Tutorial<br>Guide<br>linuxconfig.org $ ./bash-script.sh bash.txt <br>Number of elements: 4<br>Bash Scripting Tutorial Guide<br>linuxconfig.org $ <br></pre>
+<h1 id="h9-bash-if-else-fi-statements">9.&nbsp;Bash if / else / fi statements</h1>
+<h2 id="h9-1-simple-bash-if-else-statement">9.1.&nbsp;Simple Bash if/else statement</h2>
+<p>Please note the spacing inside the [ and ] brackets! Without the spaces, it won't work!</p>
+<pre>#!/bin/bash<br>directory="./BashScripting"<br><br># bash check if directory exists<br>if [ -d $directory ]; then<br>	echo "Directory exists"<br>else <br>	echo "Directory does not exists"<br>fi </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-if-else-fi-statement.gif" border="0" alt="Bash if else fi statement" title="Bash if else fi statement" width="232" height="82"></p>
+<h2 id="h9-2-nested-if-else">9.2.&nbsp;Nested if/else</h2>
+<pre>#!/bin/bash<br> <br># Declare variable choice and assign value 4<br>choice=4<br># Print to stdout<br> echo "1. Bash"<br> echo "2. Scripting"<br> echo "3. Tutorial"<br> echo -n "Please choose a word [1,2 or 3]? "<br># Loop while the variable choice is equal 4<br># bash while loop<br>while [ $choice -eq 4 ]; do<br> <br># read user input<br>read choice<br># bash nested if/else<br>if [ $choice -eq 1 ] ; then<br> <br>        echo "You have chosen word: Bash"<br><br>else                   <br><br>        if [ $choice -eq 2 ] ; then<br>                 echo "You have chosen word: Scripting"<br>        else<br>         <br>                if [ $choice -eq 3 ] ; then<br>                        echo "You have chosen word: Tutorial"<br>                else<br>                        echo "Please make a choice between 1-3 !"<br>                        echo "1. Bash"<br>                        echo "2. Scripting"<br>                        echo "3. Tutorial"<br>                        echo -n "Please choose a word [1,2 or 3]? "<br>                        choice=4<br>                fi   <br>        fi<br>fi<br>done </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-if-else-nested-statement.gif" border="0" alt="Nested Bash if else statement" title="Nested Bash if else statement" width="232" height="160"></p>
+<h1 id="h10-bash-comparisons">10.&nbsp;Bash Comparisons</h1>
+<h2 id="h10-1-arithmetic-comparisons">10.1.&nbsp;Arithmetic Comparisons</h2>
+<table border="1">
+<tbody>
+<tr>
+<td width="50">-lt</td>
+<td width="50">&lt;</td>
+</tr>
+<tr>
+<td width="50">-gt</td>
+<td width="50">&gt;</td>
+</tr>
+<tr>
+<td width="50">-le</td>
+<td width="50">&lt;=</td>
+</tr>
+<tr>
+<td width="50">-ge</td>
+<td width="50">&gt;=</td>
+</tr>
+<tr>
+<td width="50">-eq</td>
+<td width="50">==</td>
+</tr>
+<tr>
+<td width="50">-ne</td>
+<td width="50">!=</td>
+</tr>
+</tbody>
+</table>
+<pre>#!/bin/bash<br># declare integers<br>NUM1=2<br>NUM2=2<br>if [ $NUM1 -eq $NUM2 ]; then<br>	echo "Both Values are equal"<br>else <br>	echo "Values are NOT equal"<br>fi </pre>
+<p><img src="./Bash scripting Tutorial_files/bash_arithmetic-comparisons-equal.gif" border="0" alt="Bash Arithmetic Comparisons" title="Bash Arithmetic Comparisons" width="484" height="43"></p>
+<pre>#!/bin/bash<br># declare integers<br>NUM1=2<br>NUM2=1<br>if [ $NUM1 -eq $NUM2 ]; then<br>	echo "Both Values are equal"<br>else <br>	echo "Values are NOT equal"<br>fi </pre>
+<p><img src="./Bash scripting Tutorial_files/bash_arithmetic-comparisons-not-equal.gif" border="0" alt="Bash Arithmetic Comparisons - values are NOT equal" title="Bash Arithmetic Comparisons - values are NOT equal" width="484" height="43"></p>
+<pre>#!/bin/bash<br># declare integers<br>NUM1=2<br>NUM2=1<br>if   [ $NUM1 -eq $NUM2 ]; then<br>	echo "Both Values are equal"<br>elif [ $NUM1 -gt $NUM2 ]; then<br>	echo "NUM1 is greater then NUM2"<br>else <br>	echo "NUM2 is greater then NUM1"<br>fi </pre>
+<p><img src="./Bash scripting Tutorial_files/bash_arithmetic-comparisons-greater-then.gif" border="0" alt="Bash Arithmetic Comparisons - greater then" title="Bash Arithmetic Comparisons - greater then" width="370" height="43"></p>
+<h2 id="h10-2-string-comparisons">10.2.&nbsp;String Comparisons</h2>
+<table border="1">
+<tbody>
+<tr>
+<td width="50">=</td>
+<td width="200">equal</td>
+</tr>
+<tr>
+<td width="50">!=</td>
+<td width="50">not equal</td>
+</tr>
+<tr>
+<td width="50">&lt;</td>
+<td width="50">less then</td>
+</tr>
+<tr>
+<td width="50">&gt;</td>
+<td width="50">greater then</td>
+</tr>
+<tr>
+<td width="50">-n s1</td>
+<td width="50">string s1 is not empty</td>
+</tr>
+<tr>
+<td width="50">-z s1</td>
+<td width="50">string s1 is empty</td>
+</tr>
+</tbody>
+</table>
+<pre>#!/bin/bash<br>#Declare string S1<br>S1="Bash"<br>#Declare string S2<br>S2="Scripting"<br>if [ $S1 = $S2 ]; then<br>	echo "Both Strings are equal"<br>else <br>	echo "Strings are NOT equal"<br>fi </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-string-comparisons-values-NOT-equal.gif" border="0" alt="Bash String Comparisons - values are NOT equal" title="Bash String Comparisons - values are NOT equal" width="370" height="43"></p>
+<pre>#!/bin/bash<br>#Declare string S1<br>S1="Bash"<br>#Declare string S2<br>S2="Bash"<br>if [ $S1 = $S2 ]; then<br>	echo "Both Strings are equal"<br>else <br>	echo "Strings are NOT equal"<br>fi </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-string-comparisons-values-equal.gif" border="0" alt="bash interpreter location: /bin/bash" title="Locate a Bash Interpreter" width="370" height="43"></p>
+<h1 id="h11-bash-file-testing">11.&nbsp;Bash File Testing</h1>
+<table border="0">
+<tbody>
+<tr>
+<td width="140">-b filename</td>
+<td width="500">Block special file</td>
+</tr>
+<tr>
+<td width="100">-c filename</td>
+<td width="300">Special character file</td>
+</tr>
+<tr>
+<td width="100">-d directoryname</td>
+<td width="300">Check for directory existence</td>
+</tr>
+<tr>
+<td width="100">-e filename</td>
+<td width="300">Check for file existence</td>
+</tr>
+<tr>
+<td width="100">-f filename</td>
+<td width="300">Check for regular file existence not a directory</td>
+</tr>
+<tr>
+<td width="100">-G filename</td>
+<td width="300">Check if file exists and is owned by effective group ID.</td>
+</tr>
+<tr>
+<td width="100">-g filename</td>
+<td width="300">true if file exists and is set-group-id.</td>
+</tr>
+<tr>
+<td width="100">-k filename</td>
+<td width="300">Sticky bit</td>
+</tr>
+<tr>
+<td width="100">-L filename</td>
+<td width="300">Symbolic link</td>
+</tr>
+<tr>
+<td width="100">-O filename</td>
+<td width="300">True if file exists and is owned by the effective user id.</td>
+</tr>
+<tr>
+<td width="100">-r filename</td>
+<td width="300">Check if file is a readable</td>
+</tr>
+<tr>
+<td width="100">-S filename</td>
+<td width="300">Check if file is socket</td>
+</tr>
+<tr>
+<td width="100">-s filename</td>
+<td width="300">Check if file is nonzero size</td>
+</tr>
+<tr>
+<td width="100">-u filename</td>
+<td width="300">Check if file set-ser-id bit is set</td>
+</tr>
+<tr>
+<td width="100">-w filename</td>
+<td width="300">Check if file is writable</td>
+</tr>
+<tr>
+<td width="100">-x filename</td>
+<td width="300">Check if file is executable</td>
+</tr>
+</tbody>
+</table>
+<pre>#!/bin/bash<br>file="./file"<br>if [ -e $file ]; then<br>	echo "File exists"<br>else <br>	echo "File does not exists"<br>fi </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-file-testing-file-does-not-exist.gif" border="0" alt="Bash File Testing - File does not exist" title="Bash File Testing - File does not exist" width="370" height="43"> <img src="./Bash scripting Tutorial_files/bash-file-testing-file-exist.gif" border="0" alt="Bash File Testing - File exists" title="Bash File Testing - File exists" width="370" height="82"></p>
+<p>Similarly for example we can use while loop to check if file does not exists. This script will sleep until file does exists. Note bash negator "!" which negates the -e option.</p>
+<pre>#!/bin/bash<br> <br>while [ ! -e myfile ]; do<br># Sleep until file does exists/is created<br>sleep 1<br>done </pre>
+<h1 id="h12-loops">12.&nbsp;Loops</h1>
+<h2 id="h12-1-bash-for-loop">12.1.&nbsp;Bash for loop</h2>
+<pre>#!/bin/bash<br><br># bash for loop<br>for f in $( ls /var/ ); do<br>	echo $f<br>done </pre>
+<p>Running for loop from bash shell command line:</p>
+<pre>$ for f in $( ls /var/ ); do echo $f; done </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-for-loop.gif" border="0" alt="Bash for loop" title="Bash for loop" width="484" height="173"></p>
+<h2 id="h12-2-bash-while-loop">12.2.&nbsp;Bash while loop</h2>
+<pre>#!/bin/bash<br>COUNT=6<br># bash while loop<br>while [ $COUNT -gt 0 ]; do<br>	echo Value of count is: $COUNT<br>	let COUNT=COUNT-1<br>done </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-while-loop.gif" border="0" alt="Bash while loop" title="Bash while loop" width="484" height="108"></p>
+<h2 id="h12-3-bash-until-loop">12.3.&nbsp;Bash until loop</h2>
+<pre>#!/bin/bash<br>COUNT=0<br># bash until loop<br>until [ $COUNT -gt 5 ]; do<br>        echo Value of count is: $COUNT<br>        let COUNT=COUNT+1<br>done </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-until-loop.gif" border="0" alt="Bash until loop" title="Bash until loop" width="484" height="108"></p>
+<h2 id="h12-4-control-bash-loop-with">12.4.&nbsp;Control bash loop with</h2>
+<p>Here is a example of while loop controlled by standard input. Until the redirection chain from STDOUT to STDIN to the read command exists the while loop continues.</p>
+<pre>#!/bin/bash<br># This bash script will locate and replace spaces<br># in the filenames<br>DIR="."<br># Controlling a loop with bash read command by redirecting STDOUT as<br># a STDIN to while loop<br># find will not truncate filenames containing spaces<br>find $DIR -type f | while read file; do<br># using POSIX class [:space:] to find space in the filename<br>if [[ "$file" = *[[:space:]]* ]]; then<br># substitute space with "_" character and consequently rename the file<br>mv "$file" `echo $file | tr ' ' '_'`<br>fi;<br># end of while loop<br>done </pre>
+<p><img src="./Bash scripting Tutorial_files/Rename_files_containing_spaces.gif" border="0" alt="Bash script to replace spaces in the filenames with _" title="Bash script to replace spaces in the filenames with _" width="442" height="160"></p>
+<h1 id="h13-bash-functions">13.&nbsp;Bash Functions</h1>
+<pre>!/bin/bash<br># BASH FUNCTIONS CAN BE DECLARED IN ANY ORDER<br>function function_B {<br>        echo Function B.<br>}<br>function function_A {<br>        echo $1<br>}<br>function function_D {<br>        echo Function D.<br>}<br>function function_C {<br>        echo $1<br>}<br># FUNCTION CALLS<br># Pass parameter to function A<br>function_A "Function A."<br>function_B<br># Pass parameter to function C<br>function_C "Function C."<br>function_D </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-functions.gif" border="0" alt="Bash Functions" title="Bash Functions" width="484" height="82"></p>
+<h1 id="h14-bash-select">14.&nbsp;Bash Select</h1>
+<pre>#!/bin/bash<br> <br>PS3='Choose one word: ' <br><br># bash select<br>select word in "linux" "bash" "scripting" "tutorial" <br>do<br>  echo "The word you have selected is: $word"<br># Break, otherwise endless loop<br>  break  <br>done<br><br>exit 0 </pre>
+<p><img src="./Bash scripting Tutorial_files/bash_select.gif" border="0" alt="Bash Select" title="Bash Select" width="214" height="108"></p>
+<h1 id="h15-case-statement-conditional">15.&nbsp;Case statement conditional</h1>
+<pre>#!/bin/bash<br>echo "What is your preferred programming / scripting language"<br>echo "1) bash"<br>echo "2) perl"<br>echo "3) phyton"<br>echo "4) c++"<br>echo "5) I do not know !"<br>read case;<br>#simple case bash structure<br># note in this case $case is variable and does not have to<br># be named case this is just an example<br>case $case in<br>    1) echo "You selected bash";;<br>    2) echo "You selected perl";;<br>    3) echo "You selected phyton";;<br>    4) echo "You selected c++";;<br>    5) exit<br>esac </pre>
+<p><img src="./Bash scripting Tutorial_files/Bash_case_statement.gif" border="0" alt="bash case statement conditiona" title="bash case statement conditiona" width="340" height="134"></p>
+<h1 id="h16-bash-quotes-and-quotations">16.&nbsp;Bash quotes and quotations</h1>
+<p>Quotations and quotes are important part of bash and bash scripting. Here are some bash quotes and quotations basics.</p>
+<h2 id="h16-1-escaping-meta-characters">16.1.&nbsp;Escaping Meta characters</h2>
+<p>Before we start with quotes and quotations we should know something about escaping meta characters. Escaping will suppress a special meaning of meta characters and therefore meta characters will be read by bash literally. To do this we need to use backslash "\" character. Example:</p>
+<pre>#!/bin/bash<br> <br>#Declare bash string variable<br>BASH_VAR="Bash Script"<br><br># echo variable BASH_VAR<br>echo $BASH_VAR<br><br>#when meta character such us "$" is escaped with "\" it will be read literally<br>echo \$BASH_VAR <br><br># backslash has also special meaning and it can be suppressed with yet another "\"<br>echo "\\" </pre>
+<p><img src="./Bash scripting Tutorial_files/Escaping_meta.gif" border="0" alt="escaping meta characters in bash" title="escaping meta characters in bash" width="202" height="69"></p>
+<h2 id="h16-2-single-quotes">16.2.&nbsp;Single quotes</h2>
+<p>Single quotes in bash will suppress special meaning of every meta characters. Therefore meta characters will be read literally. It is not possible to use another single quote within two single quotes not even if the single quote is escaped by backslash.</p>
+<pre>#!/bin/bash<br> <br> #Declare bash string variable<br> BASH_VAR="Bash Script"<br> <br> # echo variable BASH_VAR<br> echo $BASH_VAR<br> <br> # meta characters special meaning in bash is suppressed when  using single quotes <br> echo '$BASH_VAR  "$BASH_VAR"' </pre>
+<p><img src="./Bash scripting Tutorial_files/Bash_single_quotes.gif" border="0" alt="Using single quotes in bash" title="Using single quotes in bash" width="214" height="56"></p>
+<h2 id="h16-3-double-quotes">16.3.&nbsp;Double Quotes</h2>
+<p>Double quotes in bash will suppress special meaning of every meta characters except "$", "\" and "`". Any other meta characters will be read literally. It is also possible to use single quote within double quotes. If we need to use double quotes within double quotes bash can read them literally when escaping them with "\". Example:</p>
+<pre>#!/bin/bash<br> <br>#Declare bash string variable<br>BASH_VAR="Bash Script"<br><br># echo variable BASH_VAR<br>echo $BASH_VAR<br><br># meta characters and its special meaning in bash is <br># suppressed when using double quotes except "$", "\" and "`"<br><br>echo "It's $BASH_VAR  and \"$BASH_VAR\" using backticks: `date`" </pre>
+<p><img src="./Bash scripting Tutorial_files/Bash_double_quotes.gif" border="0" alt="Using double quotes in bash" title="Using double quotes in bash" width="490" height="56"></p>
+<h2 id="h16-4-bash-quoting-with-ansi-c-style">16.4.&nbsp;Bash quoting with ANSI-C style</h2>
+<p>There is also another type of quoting and that is ANSI-C. In this type of quoting characters escaped with "\" will gain special meaning according to the ANSI-C standard.</p>
+<table border="1">
+<tbody>
+<tr>
+<td width="50">\a</td>
+<td width="250">alert (bell)</td>
+<td width="50">\b</td>
+<td width="250">backspace</td>
+</tr>
+<tr>
+<td width="50">\e</td>
+<td width="250">an escape character</td>
+<td width="50">\f</td>
+<td width="250">form feed</td>
+</tr>
+<tr>
+<td width="50">\n</td>
+<td width="250">newline</td>
+<td width="50">\r</td>
+<td width="250">carriage return</td>
+</tr>
+<tr>
+<td width="50">\t</td>
+<td width="250">horizontal tab</td>
+<td width="50">\v</td>
+<td width="250">vertical tab</td>
+</tr>
+<tr>
+<td width="50">\\</td>
+<td width="250">backslash</td>
+<td width="50">\`</td>
+<td width="250">single quote</td>
+</tr>
+<tr>
+<td width="50">\nnn</td>
+<td width="250">octal value of characters ( see [http://www.asciitable.com/ ASCII table] )</td>
+<td width="50">\xnn</td>
+<td width="250">hexadecimal value of characters ( see [http://www.asciitable.com/ ASCII table] )</td>
+</tr>
+</tbody>
+</table>
+<p>The syntax fo ansi-c bash quoting is: $'' . Here is an example:</p>
+<pre>#!/bin/bash<br> <br># as a example we have used \n as a new line, \x40 is hex value for @<br># and \56 is octal value for .<br>echo $'web: www.linuxconfig.org\nemail: web\x40linuxconfig\56org' </pre>
+<p><img src="./Bash scripting Tutorial_files/Ansi-c_bash.gif" border="0" alt="quoting in bash with ansi-c stype" title="quoting in bash with ansi-c stype" width="202" height="56"></p>
+<h1 id="h17-arithmetic-operations">17.&nbsp;Arithmetic Operations</h1>
+<h2 id="h17-1-bash-addition-calculator-example">17.1.&nbsp;Bash Addition Calculator Example</h2>
+<pre>#!/bin/bash<br> <br>let RESULT1=$1+$2<br>echo $1+$2=$RESULT1 ' -&gt; # let RESULT1=$1+$2'<br>declare -i RESULT2<br>RESULT2=$1+$2<br>echo $1+$2=$RESULT2 ' -&gt; # declare -i RESULT2; RESULT2=$1+$2'<br>echo $1+$2=$(($1 + $2)) ' -&gt; # $(($1 + $2))' </pre>
+<p><img src="./Bash scripting Tutorial_files/Bash_addition_calc.gif" border="0" alt="Bash Addition Calculator" title="Bash Addition Calculator" width="304" height="69"></p>
+<h2 id="h17-2-bash-arithmetics">17.2.&nbsp;Bash Arithmetics</h2>
+<pre>#!/bin/bash<br> <br>echo '### let ###'<br># bash addition<br>let ADDITION=3+5<br>echo "3 + 5 =" $ADDITION<br><br># bash subtraction<br>let SUBTRACTION=7-8<br>echo "7 - 8 =" $SUBTRACTION <br><br># bash multiplication<br>let MULTIPLICATION=5*8<br>echo "5 * 8 =" $MULTIPLICATION<br><br># bash division<br>let DIVISION=4/2<br>echo "4 / 2 =" $DIVISION<br><br># bash modulus<br>let MODULUS=9%4<br>echo "9 % 4 =" $MODULUS<br><br># bash power of two<br>let POWEROFTWO=2**2<br>echo "2 ^ 2 =" $POWEROFTWO<br><br><br>echo '### Bash Arithmetic Expansion ###'<br># There are two formats for arithmetic expansion: $[ expression ] <br># and $(( expression #)) its your choice which you use<br><br>echo 4 + 5 = $((4 + 5))<br>echo 7 - 7 = $[ 7 - 7 ]<br>echo 4 x 6 = $((3 * 2))<br>echo 6 / 3 = $((6 / 3))<br>echo 8 % 7 = $((8 % 7))<br>echo 2 ^ 8 = $[ 2 ** 8 ]<br><br><br>echo '### Declare ###'<br><br>echo -e "Please enter two numbers \c"<br># read user input<br>read num1 num2<br>declare -i result<br>result=$num1+$num2<br>echo "Result is:$result "<br><br># bash convert binary number 10001<br>result=2#10001<br>echo $result<br><br># bash convert octal number 16<br>result=8#16<br>echo $result<br><br># bash convert hex number 0xE6A<br>result=16#E6A<br>echo $result </pre>
+<p><img src="./Bash scripting Tutorial_files/bash-arithmetic_operations.gif" border="0" alt="Bash Arithmetic Operations" title="Bash Arithmetic Operations" width="262" height="290"></p>
+<h2 id="h17-3-round-floating-point-number">17.3.&nbsp;Round floating point number</h2>
+<pre>#!/bin/bash<br># get floating point number<br>floating_point_number=3.3446<br>echo $floating_point_number<br># round floating point number with bash<br>for bash_rounded_number in $(printf %.0f $floating_point_number); do<br>echo "Rounded number with bash:" $bash_rounded_number<br>done </pre>
+<p><img src="./Bash scripting Tutorial_files/Bash_round_floating_point_number.gif" border="0" alt="Round floating point number with bash" title="Round floating point number with bash" width="178" height="56"></p>
+<h2 id="h17-4-bash-floating-point-calculations">17.4.&nbsp;Bash floating point calculations</h2>
+<pre>#!/bin/bash<br># Simple linux bash calculator <br>echo "Enter input:" <br>read userinput<br>echo "Result with 2 digits after decimal point:"<br>echo "scale=2; ${userinput}" | bc <br>echo "Result with 10 digits after decimal point:"<br>echo "scale=10; ${userinput}" | bc <br>echo "Result as rounded integer:"<br>echo $userinput | bc </pre>
+<p><img src="./Bash scripting Tutorial_files/Bash_floating_point.gif" border="0" alt="Bash floating point calculations" title="Bash floating point calculations" width="256" height="134"></p>
+<h1 id="h18-redirections">18.&nbsp;Redirections</h1>
+<h2 id="h18-1-stdout-from-bash-script-to-stderr">18.1.&nbsp;STDOUT from bash script to STDERR</h2>
+<pre>#!/bin/bash<br> <br> echo "Redirect this STDOUT to STDERR" 1&gt;&amp;2 </pre>
+<p>To prove that STDOUT is redirected to STDERR we can redirect script's output to file:<br> <img src="./Bash scripting Tutorial_files/STDOUTtoSTDERR.gif" border="0" alt="STDOUT from bash script to STDERR" title="STDOUT from bash script to STDERR" width="286" height="147"></p>
+<h2 id="h18-2-stderr-from-bash-script-to-stdout">18.2.&nbsp;STDERR from bash script to STDOUT</h2>
+<pre>#!/bin/bash<br> <br> cat $1 2&gt;&amp;1 </pre>
+<p>To prove that STDERR is redirected to STDOUT we can redirect script's output to file:<br> <img src="./Bash scripting Tutorial_files/STDERRtoSTDOUT.gif" border="0" alt="STDERR from bash script to STDOUT" title="STDERR from bash script to STDOUT" width="358" height="147"></p>
+<h2 id="h18-3-stdout-to-screen">18.3.&nbsp;stdout to screen</h2>
+<p>The simple way to redirect a standard output ( stdout ) is to simply use any command, because by default stdout is automatically redirected to screen. First create a file "file1":</p>
+<pre>$ touch file1
+$ ls file1 
+file1
+</pre>
+<p>As you can see from the example above execution of ls command produces STDOUT which by default is redirected to screen.</p>
+<h2 id="h18-4-stdout-to-file">18.4.&nbsp;stdout to file</h2>
+<p>The override the default behavior of STDOUT we can use "&gt;" to redirect this output to file:</p>
+<pre>$ ls file1 &gt; STDOUT
+$ cat STDOUT 
+file1
+</pre>
+<h2 id="h18-5-stderr-to-file">18.5.&nbsp;stderr to file</h2>
+<p>By default STDERR is displayed on the screen:</p>
+<pre>$ ls
+file1  STDOUT
+$ ls file2
+ls: cannot access file2: No such file or directory
+</pre>
+<p>In the following example we will redirect the standard error ( stderr ) to a file and stdout to a screen as default. Please note that STDOUT is displayed on the screen, however STDERR is redirected to a file called STDERR:</p>
+<pre>$ ls
+file1  STDOUT
+$ ls file1 file2 2&gt; STDERR
+file1
+$ cat STDERR 
+ls: cannot access file2: No such file or directory
+</pre>
+<h2 id="h18-6-stdout-to-stderr">18.6.&nbsp;stdout to stderr</h2>
+<p>It is also possible to redirect STDOUT and STDERR to the same file. In the next example we will redirect STDOUT to the same descriptor as STDERR. Both STDOUT and STDERR will be redirected to file "STDERR_STDOUT".</p>
+<pre>$ ls
+file1  STDERR  STDOUT
+$ ls file1 file2 2&gt; STDERR_STDOUT 1&gt;&amp;2
+$ cat STDERR_STDOUT
+ls: cannot access file2: No such file or directory
+file1
+</pre>
+<p>File STDERR_STDOUT now contains STDOUT and STDERR.</p>
+<h2 id="h18-7-stderr-to-stdout">18.7.&nbsp;stderr to stdout</h2>
+<p>The above example can be reversed by redirecting STDERR to the same descriptor as SDTOUT:</p>
+<pre>$ ls
+file1  STDERR  STDOUT
+$ ls file1 file2 &gt; STDERR_STDOUT 2&gt;&amp;1
+$ cat STDERR_STDOUT 
+ls: cannot access file2: No such file or directory
+file1
+</pre>
+<h2 id="h18-8-stderr-and-stdout-to-file">18.8.&nbsp;stderr and stdout to file</h2>
+<p>Previous two examples redirected both STDOUT and STDERR to a file. Another way to achieve the same effect is illustrated below:</p>
+<pre>$ ls
+file1  STDERR  STDOUT
+$ ls file1 file2 &amp;&gt; STDERR_STDOUT
+$ cat STDERR_STDOUT 
+ls: cannot access file2: No such file or directory
+file1
+</pre>
+<p>or</p>
+<pre>ls file1 file2 &gt;&amp; STDERR_STDOUT
+$ cat STDERR_STDOUT 
+ls: cannot access file2: No such file or directory
+file1
+</pre>
+	
+						 </div>
+
+									</div>
+										</div>
+										<div id="jsn-pos-user-bottom" class="jsn-modulescontainer jsn-horizontallayout jsn-modulescontainer1">
+									<div class=" jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><div class="jsn-modulecontent">
+<div>
+	<center>
+<script async="" src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 728x15, created 5/12/10 -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:15px" data-ad-client="ca-pub-4906753266448300" data-ad-slot="0825372747"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script><br><br>
+<script type="text/javascript">// <![CDATA[
+google_ad_client = "ca-pub-4906753266448300";
+/* 728x90, created 3/12/09 */
+google_ad_slot = "7045095412";
+google_ad_width = 728;
+google_ad_height = 90;
+// ]]></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">// <![CDATA[
+
+// ]]></script>
+</center></div><div class="clearbreak"></div></div></div></div>
+                                    <div class="clearbreak"></div>
+								</div>
+									</div>
+						</div>
+								<div id="jsn-pos-innerright">
+							<div id="jsn-pos-innerright_inner">
+								<div class=" jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><div class="jsn-modulecontent">
+<div>
+	<p>
+<script type="text/javascript">// <![CDATA[
+google_ad_client = "ca-pub-4906753266448300";
+/* LinuxCareer - 300 x 600 - left sidebar */
+google_ad_slot = "6488865241";
+google_ad_width = 300;
+google_ad_height = 600;
+// ]]></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">// <![CDATA[
+
+// ]]></script>
+</p></div><div class="clearbreak"></div></div></div></div><div class="richbox-2 jsn-icon-star jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><h3 class="jsn-moduletitle"><span class="jsn-moduletitle_inner1"><span class="jsn-moduletitle_inner2"><span class="jsn-moduleicon">Free Linux eBooks</span></span></span></h3><div class="jsn-modulecontent"><!-- JSN IMAGESHOW PRO UNLIMITED 4.7.0 - Theme Slider 1.1.4 --><div class="jsn-container"><div class="jsn-gallery"><div id="jsn-themeslider-skitter-6kl6L"><div style="width: 200px; height: 259px;" class="box_skitter jsn-themeslider-gallery jsn-themeslider-skitter-6kl6L">
+<ul style="display: none;"><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04">
+			   				<img src="./Bash scripting Tutorial_files/w_infk04c4.gif" alt="Java™ Application Development on Linux" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Java™ Application Development on Linux</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_mach01/?p=w_mach01">
+			   				<img src="./Bash scripting Tutorial_files/w_mach01c4.gif" alt="Introduction to Linux - A Hands on Guide" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Introduction to Linux - A Hands on Guide</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_orei01/?p=w_orei01">
+			   				<img src="./Bash scripting Tutorial_files/w_orei01c4.gif" alt="Linux Device Drivers, 2nd Edition" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Linux Device Drivers, 2nd Edition</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk12/?p=w_infk12">
+			   				<img src="./Bash scripting Tutorial_files/w_infk12c4.gif" alt="Linux® Patch Management" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Linux® Patch Management</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk07/?p=w_infk07">
+			   				<img src="./Bash scripting Tutorial_files/w_infk07c4.gif" alt="An Introduction to Design Patterns in C++ with Qt 4" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">An Introduction to Design Patterns in C++ with Qt 4</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk10/?p=w_infk10">
+			   				<img src="./Bash scripting Tutorial_files/w_infk10c4.gif" alt="Understanding the Linux® Virtual Memory Manager" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Understanding the Linux® Virtual Memory Manager</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk05/?p=w_infk05">
+			   				<img src="./Bash scripting Tutorial_files/w_infk05c4.gif" alt="Managing Linux® Systems with Webmin™" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Managing Linux® Systems with Webmin™</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk01/?p=w_infk01">
+			   				<img src="./Bash scripting Tutorial_files/w_infk01c4.gif" alt="Open Source Security Tools" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Open Source Security Tools</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk02/?p=w_infk02">
+			   				<img src="./Bash scripting Tutorial_files/w_infk02c4.gif" alt="Linux® Quick Fix Notebook" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Linux® Quick Fix Notebook</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk09/?p=w_infk09">
+			   				<img src="./Bash scripting Tutorial_files/w_infk09c4.gif" alt="User Mode Linux" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">User Mode Linux</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_wile11/?p=w_wile11">
+			   				<img src="./Bash scripting Tutorial_files/w_wile11c4.gif" alt="Ubuntu Linux Toolbox: 1000+ Commands" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Ubuntu Linux Toolbox: 1000+ Commands</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk03/?p=w_infk03">
+			   				<img src="./Bash scripting Tutorial_files/w_infk03c4.gif" alt="Self-Service Linux®: Mastering the Art of Problem Determination" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">Self-Service Linux®: Mastering the Art of Problem Determination</p></div>
+					 </li><li>
+			   			<a href="http://linuxconfig-org.tradepub.com/free/w_infk14/?p=w_infk14">
+			   				<img src="./Bash scripting Tutorial_files/w_infk14c4.gif" alt="The Official Samba-3 HOWTO and Reference Guide" style="height: 259px;">
+			   			</a>
+			   			<div class="label_text"><p class="jsn-themeslider-caption-title">The Official Samba-3 HOWTO and Reference Guide</p></div>
+					 </li></ul><input type="hidden" class="cache_skitter_index" value=""><span class="prev_button" style="display: none;">prev</span><span class="next_button" style="display: none;">next</span><span class="info_slide" style="display: none; left: 15px;"><span class="image_number image_number_select" rel="0" id="image_n_1_4" style="color: rgb(255, 255, 255); background-color: rgb(204, 51, 51);">1</span> <span class="image_number" rel="1" id="image_n_2_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">2</span> <span class="image_number" rel="2" id="image_n_3_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">3</span> <span class="image_number" rel="3" id="image_n_4_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">4</span> <span class="image_number" rel="4" id="image_n_5_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">5</span> <span class="image_number" rel="5" id="image_n_6_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">6</span> <span class="image_number" rel="6" id="image_n_7_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">7</span> <span class="image_number" rel="7" id="image_n_8_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">8</span> <span class="image_number" rel="8" id="image_n_9_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">9</span> <span class="image_number" rel="9" id="image_n_10_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">10</span> <span class="image_number" rel="10" id="image_n_11_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">11</span> <span class="image_number" rel="11" id="image_n_12_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">12</span> <span class="image_number" rel="12" id="image_n_13_4" style="color: rgb(255, 255, 255); background-color: rgb(51, 51, 51);">13</span> </span><div class="container_skitter" style="width: 200px; height: 259px;"><div class="image"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04" target="_self"><img class="image_main" src="./Bash scripting Tutorial_files/w_infk04c4.gif" style="width: 200px; display: inline; height: 259px;"></a><div class="label_skitter" style="display: none; width: 200px;"><p class="jsn-themeslider-caption-title">Java™ Application Development on Linux</p></div></div><div class="box_clone" style="left: -64px; top: -34.5px; width: 328px; height: 328px; border-radius: 328px; display: none; transform: matrix(-0.522303, 0.852766, -0.852766, -0.522303, 0, 0) rotate(20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: 64px; top: 34.5px; height: 259px;"></a></div><div class="box_clone" style="left: -14px; top: 15.5px; width: 228px; height: 228px; border-radius: 328px; display: none; transform: matrix(-0.511452, -0.859308, 0.859308, -0.511452, 0, 0) rotate(-20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: 14px; top: -15.5px; height: 259px;"></a></div><div class="box_clone" style="left: 36px; top: 65.5px; width: 128px; height: 128px; border-radius: 328px; display: none; transform: matrix(-0.666107, 0.745856, -0.745856, -0.666107, 0, 0) rotate(20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: -36px; top: -65.5px; height: 259px;"></a></div><div class="box_clone" style="left: 86px; top: 115.5px; width: 28px; height: 28px; border-radius: 328px; display: none; transform: matrix(-0.772202, -0.635377, 0.635377, -0.772202, 0, 0) rotate(-20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: -86px; top: -115.5px; height: 259px;"></a></div><div class="box_clone" style="left: 136px; top: 165.5px; width: 0px; height: 0px; border-radius: 328px; display: none; transform: matrix(-0.682158, 0.731205, -0.731205, -0.682158, 0, 0) rotate(20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: -136px; top: -165.5px; height: 259px;"></a></div><div class="box_clone" style="left: 186px; top: 215.5px; width: 0px; height: 0px; border-radius: 328px; display: none; transform: matrix(-0.776006, -0.630721, 0.630721, -0.776006, 0, 0) rotate(-20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: -186px; top: -215.5px; height: 259px;"></a></div><div class="box_clone" style="left: 236px; top: 265.5px; width: 0px; height: 0px; border-radius: 328px; display: none; transform: matrix(-0.829801, 0.558059, -0.558059, -0.829801, 0, 0) rotate(20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: -236px; top: -265.5px; height: 259px;"></a></div><div class="box_clone" style="left: 286px; top: 315.5px; width: 0px; height: 0px; border-radius: 328px; display: none; transform: matrix(-0.906805, -0.421553, 0.421553, -0.906805, 0, 0) rotate(-20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: -286px; top: -315.5px; height: 259px;"></a></div><div class="box_clone" style="left: 336px; top: 365.5px; width: 0px; height: 0px; border-radius: 328px; display: none; transform: matrix(-0.752232, 0.658901, -0.658901, -0.752232, 0, 0) rotate(20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: -336px; top: -365.5px; height: 259px;"></a></div><div class="box_clone" style="left: 386px; top: 415.5px; width: 0px; height: 0px; border-radius: 328px; display: none; transform: matrix(-0.834996, -0.550254, 0.550254, -0.834996, 0, 0) rotate(-20deg);"><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04"><img src="./Bash scripting Tutorial_files/w_infk14c4.gif" style="width: 200px; left: -386px; top: -415.5px; height: 259px;"></a></div></div><span class="play_pause_button" style="left: 79px; opacity: 0;">pause</span></div>
+</div><script type="text/javascript">
+						jsnThemeSliderjQuery(function() {
+						jsnThemeSliderjQuery(document).ready(function(){
+							var wrap_width = parseInt(200);
+							var window_width = parseInt(jsnThemeSliderjQuery(window).width());
+							if (wrap_width > window_width) {
+								jsnThemeSliderjQuery('.jsn-themeslider-skitter-6kl6L').css("width", "100%");
+							} else {
+								jsnThemeSliderjQuery('.jsn-themeslider-skitter-6kl6L').css("width", "200px");
+							}
+							var oldHTML = jsnThemeSliderjQuery('#jsn-themeslider-skitter-6kl6L').html();
+							var options = {"animation":"circlesRotate","navigation":true,"navShowOnMouseOver":true,"dots":false,"numbers":false,"caption_title_css":"font-family: Verdana;\r\nfont-size: 10px;\r\nfont-weight: bold;\r\ntext-align: left;\r\ncolor: #E9E9E9;","caption_description_css":"font-family: Arial;\r\nfont-size: 11px;\r\nfont-weight: normal;\r\ntext-align: left;\r\ncolor: #AFAFAF;","caption_link_css":"font-family: Verdana;\r\nfont-size: 11px;\r\nfont-weight: bold;\r\ntext-align: right;\r\ncolor: #E06614;","caption_position":"top","caption_caption_opacity":"filter:alpha(opacity=75);opacity: 0.75;","interval":7000,"controls":true,"controlShowOnMouseOver":true,"stop_over":true,"auto_play":true,"caption_title_show":true,"caption_description_show":false,"caption_link_show":false,"label":false,"animateNumberActive":{"backgroundColor":"#CC3333","color":"#fff"},"click_action":"open_image_link","open_link_in":"current_browser","skitter_class_id":"jsn-themeslider-skitter-6kl6L"};
+							options.base_height = 259;
+							jsnThemeSliderjQuery('.jsn-themeslider-skitter-6kl6L').skitter(options);
+							jsnThemeSliderjQuery('.jsn-themeslider-skitter-6kl6L .image_main').css("max-width", "");
+							var jsn_6kl6L = jsnThemeSliderjQuery(window).width();
+							var cacheResize;
+							jsnThemeSliderjQuery(window).resize(function (e) {
+								if (jsn_6kl6L != jsnThemeSliderjQuery(window).width())
+								{
+									clearTimeout(cacheResize);
+									cacheResize = "";
+									var oldCacheIndex = jsnThemeSliderjQuery('#jsn-themeslider-skitter-6kl6L .cache_skitter_index').attr('value');
+									jsnThemeSliderjQuery('#jsn-themeslider-skitter-6kl6L').html(oldHTML);
+									var wrap_width = parseInt(200);
+							var window_width = parseInt(jsnThemeSliderjQuery(window).width());
+							if (wrap_width > window_width) {
+								jsnThemeSliderjQuery('.jsn-themeslider-skitter-6kl6L').css("width", "100%");
+							} else {
+								jsnThemeSliderjQuery('.jsn-themeslider-skitter-6kl6L').css("width", "200px");
+							}
+									jsnThemeSliderjQuery('#jsn-themeslider-skitter-6kl6L .cache_skitter_index').attr('value', oldCacheIndex);
+									var options = {"animation":"circlesRotate","navigation":true,"navShowOnMouseOver":true,"dots":false,"numbers":false,"caption_title_css":"font-family: Verdana;\r\nfont-size: 10px;\r\nfont-weight: bold;\r\ntext-align: left;\r\ncolor: #E9E9E9;","caption_description_css":"font-family: Arial;\r\nfont-size: 11px;\r\nfont-weight: normal;\r\ntext-align: left;\r\ncolor: #AFAFAF;","caption_link_css":"font-family: Verdana;\r\nfont-size: 11px;\r\nfont-weight: bold;\r\ntext-align: right;\r\ncolor: #E06614;","caption_position":"top","caption_caption_opacity":"filter:alpha(opacity=75);opacity: 0.75;","interval":7000,"controls":true,"controlShowOnMouseOver":true,"stop_over":true,"auto_play":true,"caption_title_show":true,"caption_description_show":false,"caption_link_show":false,"label":false,"animateNumberActive":{"backgroundColor":"#CC3333","color":"#fff"},"click_action":"open_image_link","open_link_in":"current_browser","skitter_class_id":"jsn-themeslider-skitter-6kl6L"};
+									options.base_height = 259;
+									cacheResize = setTimeout(function () {
+										jsnThemeSliderjQuery('.jsn-themeslider-skitter-6kl6L').skitter(options);
+										jsnThemeSliderjQuery('.jsn-themeslider-skitter-6kl6L .image_main').css("max-width", "");
+									}, 500);
+									jsn_6kl6L = jsnThemeSliderjQuery(window).width();
+								}
+							});
+						})});
+				</script><div class="jsn-themeslider-seocontent">
+<div><p>Tradepub Ebooks</p><p></p><ul><li><p>Introduction to Linux - A Hands on Guide</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_mach01/?p=w_mach01">http://linuxconfig-org.tradepub.com/free/w_mach01/?p=w_mach01</a></p></li><li><p>Understanding the Linux® Virtual Memory Manager</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk10/?p=w_infk10">http://linuxconfig-org.tradepub.com/free/w_infk10/?p=w_infk10</a></p></li><li><p>User Mode Linux</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk09/?p=w_infk09">http://linuxconfig-org.tradepub.com/free/w_infk09/?p=w_infk09</a></p></li><li><p>Self-Service Linux®: Mastering the Art of Problem Determination</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk03/?p=w_infk03">http://linuxconfig-org.tradepub.com/free/w_infk03/?p=w_infk03</a></p></li><li><p>Linux® Quick Fix Notebook</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk02/?p=w_infk02">http://linuxconfig-org.tradepub.com/free/w_infk02/?p=w_infk02</a></p></li><li><p>Managing Linux® Systems with Webmin™</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk05/?p=w_infk05">http://linuxconfig-org.tradepub.com/free/w_infk05/?p=w_infk05</a></p></li><li><p>Linux® Patch Management</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk12/?p=w_infk12">http://linuxconfig-org.tradepub.com/free/w_infk12/?p=w_infk12</a></p></li><li><p>The Official Samba-3 HOWTO and Reference Guide</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk14/?p=w_infk14">http://linuxconfig-org.tradepub.com/free/w_infk14/?p=w_infk14</a></p></li><li><p>Linux Device Drivers, 2nd Edition</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_orei01/?p=w_orei01">http://linuxconfig-org.tradepub.com/free/w_orei01/?p=w_orei01</a></p></li><li><p>Java™ Application Development on Linux</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04">http://linuxconfig-org.tradepub.com/free/w_infk04/?p=w_infk04</a></p></li><li><p>Open Source Security Tools</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk01/?p=w_infk01">http://linuxconfig-org.tradepub.com/free/w_infk01/?p=w_infk01</a></p></li><li><p>An Introduction to Design Patterns in C++ with Qt 4</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_infk07/?p=w_infk07">http://linuxconfig-org.tradepub.com/free/w_infk07/?p=w_infk07</a></p></li><li><p>Ubuntu Linux Toolbox: 1000+ Commands</p><p><a href="http://linuxconfig-org.tradepub.com/free/w_wile11/?p=w_wile11">http://linuxconfig-org.tradepub.com/free/w_wile11/?p=w_wile11</a></p></li></ul></div></div>
+</div></div><div class="clearbreak"></div></div></div></div><div class="lightbox-2 jsn-icon-user jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><h3 class="jsn-moduletitle"><span class="jsn-moduletitle_inner1"><span class="jsn-moduletitle_inner2"><span class="jsn-moduleicon">Latest Linux Jobs</span></span></span></h3><div class="jsn-modulecontent">
+<div>
+	<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+
+
+  
+    
+    <title>Google AJAX Search API Sample</title>
+    <script src="./Bash scripting Tutorial_files/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+    /*
+    *  How to use the Feed Control to grab, parse and display feeds.
+    */
+    
+    google.load("feeds", "1");
+    
+    function OnLoad() {
+      // Create a feed control
+      var feedControl = new google.feeds.FeedControl();
+    
+      // Add two feeds.
+      feedControl.addFeed("https://jobs.linuxcareers.com/rss/linuxcareers-usjobs.xml", "<b>United States</b>");
+      feedControl.setNumEntries('10')
+  
+    
+      // Draw it.
+      feedControl.draw(document.getElementById("content"));
+    }
+    
+    google.setOnLoadCallback(OnLoad);
+    </script><script src="./Bash scripting Tutorial_files/saved_resource" type="text/javascript"></script><link href="./Bash scripting Tutorial_files/default+ru.css" type="text/css" rel="stylesheet"><script src="./Bash scripting Tutorial_files/default+ru.I.js" type="text/javascript"></script>
+   
+  
+  
+   
+    <div id="content"><div class="gfc-control"><div class="gfc-resultsbox-visible"><div class="gfc-resultsRoot"><div class="gfc-resultsHeader"><div class="gfc-title"><b>United States</b></div></div><div class="gfc-results"><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/linux-systems-engineer/1370" class="gf-title" target="_self">Linux Systems Engineer</a></div><div class="gf-relativePublishedDate">23 сент 2015</div><div class="gf-snippet">WE’RE CHANGING THE WORLD – ONE HOME AT A TIME!.
+
+CEIVA is an innovative, consumer electronics and software company with cutting ...</div></div></div><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/systems-administrator/1368" class="gf-title" target="_self">Systems Administrator</a></div><div class="gf-relativePublishedDate">23 сент 2015</div><div class="gf-snippet">The Center for Computational Research (CCR) at the University atBuffalo (UB) invites applications for a systemsadministrator. ...</div></div></div><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/senior-ruby-on-rails-engineer/1367" class="gf-title" target="_self">Senior Ruby on Rails Engineer</a></div><div class="gf-relativePublishedDate">16 сент 2015</div><div class="gf-snippet">The Senior Ruby on Rails Engineer, as an individual contributor in our small and highly collaborative team is responsible for ...</div></div></div><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/senior-unix-linux-engineer-2nd-shift/1364" class="gf-title" target="_self">Senior Unix Linux Engineer (2nd Shift)</a></div><div class="gf-relativePublishedDate">16 сент 2015</div><div class="gf-snippet">Come join us and change the world’s relationship with energy, forever. Be a part of a passionate, collaborative and innovative ...</div></div></div><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/linux-systems-administrator/1363" class="gf-title" target="_self">Linux Systems Administrator</a></div><div class="gf-relativePublishedDate">16 сент 2015</div><div class="gf-snippet">Who We Are and What We Are Looking For…
+
+The Infusionsoft Production Operations team is hiring a full-time Systems ...</div></div></div><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/sr-linux-admin/1359" class="gf-title" target="_self">Sr. Linux Admin</a></div><div class="gf-relativePublishedDate">10 сент 2015</div><div class="gf-snippet">PulsePoint™ is a next-gen advertising technology platform that fuses the science of programmatic targeting, distribution and ...</div></div></div><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/senior-linux-systems-engineer/1358" class="gf-title" target="_self">Senior Linux Systems Engineer</a></div><div class="gf-relativePublishedDate">10 сент 2015</div><div class="gf-snippet">At Synthetic Genomics, Inc., we are dedicated to developing and commercializing genomic-driven solutions to address global ...</div></div></div><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/linux-systems-administrator/1357" class="gf-title" target="_self">Linux Systems Administrator</a></div><div class="gf-relativePublishedDate">10 сент 2015</div><div class="gf-snippet">This position will be responsible for maintaining and supporting our Linux-based mission-critical systems ...</div></div></div><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/linux-infrastructure-engineer/1356" class="gf-title" target="_self">LINUX INFRASTRUCTURE ENGINEER</a></div><div class="gf-relativePublishedDate">07 сент 2015</div><div class="gf-snippet">NVIDIA's GTLOPS team is looking for a linux sysadmin/devops engineer.
+
+OUR TEAM:
+- We have a small team of support engineers ...</div></div></div><div class="gfc-result"><div class="gf-result"><div class="gf-title"><a href="https://jobs.linuxcareers.com/linux/job/unix-linux-administrators/1354" class="gf-title" target="_self">Unix/Linux Administrators</a></div><div class="gf-relativePublishedDate">07 сент 2015</div><div class="gf-snippet">The successful candidate will be expected to perform the following tasks associated with day-to-day Linux-Unix server ...</div></div></div></div></div></div></div></div>
+  <a class="link-button button-green" href="https://jobs.linuxcareers.com/">Post your job here</a><br><font size="1">Provided by LinuxCareers.com</font>
+</div><div class="clearbreak"></div></div></div></div><div class="lightbox-2 jsn-icon-search jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><h3 class="jsn-moduletitle"><span class="jsn-moduletitle_inner1"><span class="jsn-moduletitle_inner2"><span class="jsn-moduleicon">Search Articles</span></span></span></h3><div class="jsn-modulecontent"><form action="./Bash scripting Tutorial_files/Bash scripting Tutorial.html" method="post">
+	<div class="search">
+		<label for="mod-search-searchword"></label><input name="searchword" id="mod-search-searchword" maxlength="200" class="inputbox" type="text" size="35" value="search ..." onblur="if (this.value==&#39;&#39;) this.value=&#39;search ...&#39;;" onfocus="if (this.value==&#39;search ...&#39;) this.value=&#39;&#39;;"><p align="center"><input type="submit" value="Search" class="button" onclick="this.form.searchword.focus();"></p>	<input type="hidden" name="task" value="search">
+	<input type="hidden" name="option" value="com_search">
+	<input type="hidden" name="Itemid" value="914">
+	</div>
+</form>
+<div class="clearbreak"></div></div></div></div><div class="lightbox-2 jsn-icon-info jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><h3 class="jsn-moduletitle"><span class="jsn-moduletitle_inner1"><span class="jsn-moduletitle_inner2"><span class="jsn-moduleicon">Find Linux Professionals</span></span></span></h3><div class="jsn-modulecontent">
+<div>
+	<p><a href="http://www.linuxcareers.com/"><img src="http://linuxconfig.org/images/300x250_linuxcareers_coming_soon_banner.png" alt="Linux Career, Linux Jobs" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;" width="0" height="0"></a></p></div><div class="clearbreak"></div></div></div></div><div class="lightbox-2 jsn-icon-info jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><h3 class="jsn-moduletitle"><span class="jsn-moduletitle_inner1"><span class="jsn-moduletitle_inner2"><span class="jsn-moduleicon">Friendly Sites</span></span></span></h3><div class="jsn-modulecontent">
+<div>
+	<p><a href="http://tuxmachines.org/">Tuxmachines.org</a><br> <a href="http://www.linuxscrew.com/">Linuxscrew.com</a></p>
+<center><a class="link-button button-blue" href="http://linuxcareer.com/contact-us">Suggest Website !</a></center></div><div class="clearbreak"></div></div></div></div><div class="lightbox-2 jsn-icon-info jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><h3 class="jsn-moduletitle"><span class="jsn-moduletitle_inner1"><span class="jsn-moduletitle_inner2"><span class="jsn-moduleicon">Latest Configs</span></span></span></h3><div class="jsn-modulecontent"><ul class="latestnewslightbox-2 jsn-icon-info">
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-change-sasl-user-s-password-using-saslpasswd2" itemprop="url">
+			<span itemprop="name">
+				How to change sasl user's password using saslpasswd2			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-perform-auth-digest-md5-cram-md5-command-line-smtp-authentication" itemprop="url">
+			<span itemprop="name">
+				How to perform AUTH DIGEST-MD5 CRAM-MD5 command line SMTP authentication			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/backdrop-content-management-framework-docker-image-deployment-and-usage" itemprop="url">
+			<span itemprop="name">
+				Backdrop content management framework Docker image deployment and usage 			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/rygel-dlna-share-media-server-deployment-using-docker" itemprop="url">
+			<span itemprop="name">
+				Rygel - DLNA Share Media Server deployment using docker			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-deny-allow-access-to-files-using-htaccess-file" itemprop="url">
+			<span itemprop="name">
+				How to deny/allow access to files using .htaccess file			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/term-environment-variable-not-set-solution" itemprop="url">
+			<span itemprop="name">
+				TERM environment variable not set - Solution			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-start-a-docker-with-exited-1-status" itemprop="url">
+			<span itemprop="name">
+				How to start a docker with Exited (-1) status solution			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-initialize-a-git-repository-with-github" itemprop="url">
+			<span itemprop="name">
+				How to initialize a git repository with Github 			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-install-chrome-browser-on-centos-linux-7" itemprop="url">
+			<span itemprop="name">
+				How to install Chrome browser on CentOS Linux 7			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-set-change-a-hostname-on-coreos-linux" itemprop="url">
+			<span itemprop="name">
+				How to set/change a hostname on CoreOS Linux			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-change-a-time-zone-on-coreos-linux" itemprop="url">
+			<span itemprop="name">
+				How to change a time zone on CoreOS Linux			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-perform-a-bare-metal-installation-of-coreos-linux" itemprop="url">
+			<span itemprop="name">
+				How to perform a bare metal installation of CoreOS Linux			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/nvidia-geforce-driver-installation-on-centos-7-linux-64-bit" itemprop="url">
+			<span itemprop="name">
+				NVIDIA GeForce Driver Installation on CentOS 7 Linux 64-bit			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-list-all-or-specific-packages-installed-on-debian-ubuntu-linux-system" itemprop="url">
+			<span itemprop="name">
+				How to list all or specific packages installed on Debian/Ubuntu Linux system			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-list-all-files-installed-by-the-deb-package-on-ubuntu-debian" itemprop="url">
+			<span itemprop="name">
+				How to list all files installed by the DEB package on Ubuntu/Debian Linux			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-check-centos-version" itemprop="url">
+			<span itemprop="name">
+				How to check CentOS version			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/vagrant-installation-on-centos-linux-system" itemprop="url">
+			<span itemprop="name">
+				Vagrant installation on CentOS Linux system			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/r-programming-software-environment-docker-image-deployment-and-usage" itemprop="url">
+			<span itemprop="name">
+				R programming software environment Docker image deployment and usage			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-move-a-docker-image-to-another-system" itemprop="url">
+			<span itemprop="name">
+				How to move a Docker image to another system			</span>
+		</a>
+	</li>
+	<li itemscope="" itemtype="http://schema.org/Article">
+		<a href="http://linuxconfig.org/how-to-access-and-print-command-line-arguments-with-python" itemprop="url">
+			<span itemprop="name">
+				How to access and print command line arguments with Python			</span>
+		</a>
+	</li>
+</ul>
+<div class="clearbreak"></div></div></div></div>
+							</div>
+						</div>
+							<div class="clearbreak"></div></div></div></div></div></div></div></div>
+						<div class="clearbreak"></div>
+			</div>
+					<div id="jsn-content-bottom">
+			                <div id="jsn-pos-content-bottom" class="jsn-modulescontainer jsn-horizontallayout jsn-modulescontainer3">
+                	<div class="jsn-icon-search jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><h3 class="jsn-moduletitle"><span class="jsn-moduletitle_inner1"><span class="jsn-moduletitle_inner2"><span class="jsn-moduleicon">Find ideal linux career today</span></span></span></h3><div class="jsn-modulecontent">
+<div>
+	<p>Find the job that's right for you ! Linux professionals on any experience level can now find latest employment opportunities on our <a class="link-action" href="http://jobs.linuxcareers.com/" title="Linux Jobs">Linux Jobs</a> page.</p></div><div class="clearbreak"></div></div></div></div><div class="jsn-icon-statistics jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><h3 class="jsn-moduletitle"><span class="jsn-moduletitle_inner1"><span class="jsn-moduletitle_inner2"><span class="jsn-moduleicon">Do you have the right skills?</span></span></span></h3><div class="jsn-modulecontent">
+<div>
+	<p>Our IT Skills Watch page reflects an up to date IT skills demand leaning towards the Linux and Unix environment. We have considered a number of skills and operating systems.</p>
+<p><strong><a class="link-action" href="http://www.linuxcareer.com/it-skills-watch" title="IT skills watch">See the result...</a></strong></p></div><div class="clearbreak"></div></div></div></div><div class="jsn-icon-help jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><h3 class="jsn-moduletitle"><span class="jsn-moduletitle_inner1"><span class="jsn-moduletitle_inner2"><span class="jsn-moduleicon">Linux Online Training</span></span></span></h3><div class="jsn-modulecontent">
+<div>
+	<p>Learn to run Linux servers and prepare for LPI certification with <a class="link-action" href="https://linuxacademy.com/" title="IT skills watch">Linux Academy</a>. 104 available video lessons with PDF course notes with your own server!</p></div><div class="clearbreak"></div></div></div></div>
+                    <div class="clearbreak"></div>
+                </div>
+			            </div>
+				</div>
+					<div id="jsn-footer">
+				<div id="jsn-footer_inner">
+					<div id="jsn-footermodules" class="jsn-modulescontainer jsn-modulescontainer1">
+								<div id="jsn-pos-footer">
+						<div class=" jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><div class="jsn-modulecontent"><span class="jsn-menu-toggle">Menu</span>
+<ul class="menu-divmenu">
+<li class="first">	<a href="http://jobs.linuxcareers.com/">
+		<span>
+		Linux Job Search		</span>
+	</a>
+	</li><li class="last">	<a href="http://www.linuxcareer.com/contact-us">
+		<span>
+		Contact us		</span>
+	</a>
+	</li></ul><div class="clearbreak"></div></div></div></div><div class=" jsn-modulecontainer"><div class="jsn-modulecontainer_inner"><div class="jsn-modulecontent">
+<div>
+	<p style="text-align: right;"><b><a href="http://www.linuxcareer.com/" class="link-button button-orange"><font size="1">Linux Career - Member Site</font></a><br>Copyright 2007 - 2015 LinuxConfig.org. All rights reserved.</b></p></div><div class="clearbreak"></div></div></div></div><b>
+					</b></div><b>
+								<div class="clearbreak"></div>
+				</b></div><b>
+			</b></div><b>
+		</b></div><b>
+			</b></div><b>
+			<a id="jsn-gotoplink" href="http://linuxconfig.org/bash-scripting-tutorial#top" opacity="0" style="margin-left: -40px; opacity: 1; visibility: visible;">
+			<span>Go to top</span>
+		</a>
+	
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40602308-3', 'linuxconfig.org');
+  ga('send', 'pageview');
+
+</script>
+
+</b><div id="sbox-overlay" aria-hidden="true" tabindex="-1" style="z-index: 65555; opacity: 0;"></div><div id="sbox-window" role="dialog" aria-hidden="true" class="shadow" style="z-index: 65557;"><div id="sbox-content" style="opacity: 0;"></div><a id="sbox-btn-close" href="http://linuxconfig.org/bash-scripting-tutorial#" role="button" aria-controls="sbox-window"></a></div><div style="display: none; color: white; text-align: center; position: fixed; top: 0px; left: 0px; width: 100%; height: auto; min-width: 100%; min-height: auto; max-width: 100%; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, Geneva, sans-serif; cursor: pointer; padding: 5px; background-color: rgb(255, 143, 0);"><span style="color: white; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: &#39;Helvetica Neue&#39;, Helvetica, Arial, Geneva, sans-serif;">You have turned off the paragraph player. You can turn it on again from the options page.</span><img src="chrome-extension://gfjopfpjmkcfgjpogepmdjmcnihfpokn/img/icons/icon-close_16.png" style="width: 20px; height: auto; min-width: 20px; min-height: auto; max-width: 20px; float: right; margin-right: 10px;"></div></body></html>
